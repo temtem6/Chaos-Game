@@ -33,7 +33,7 @@ int main()
 		}	
 		sf:Text text;
 		text.setFont(font);
-		text.setString("");
+		text.setString("Click on 3 points to draw the triangle.");
 		text.setCharacterSize(18);
 		text.FillColor(sf::Color::Red);
 		text.setStyle(sf::Text::Bold);
@@ -63,6 +63,8 @@ int main()
                     				{
                        					///fourth click
                         				///push back to points vector
+							std::cout << "click a point inside the triangle" << std::endl;
+							vertices.push_back(Vector2f(event.mouseButton.x, event.mouseButton.y));
                     				}
                 		}
             		}
@@ -83,6 +85,7 @@ int main()
             ///select random vertex
             ///calculate midpoint between random vertex and the last point in the vector
             ///push back the newly generated coord.
+			
         	}
 
         	/*
