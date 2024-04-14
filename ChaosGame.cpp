@@ -19,7 +19,7 @@ int main()
     vector<Vector2f> vertices;
     vector<Vector2f> points;
     std::cout << "Pieces stuff" << std::endl;
-    std::cout << "I love cakes" << std::endl;
+    
 	while (window.isOpen())
 	{
         	/*
