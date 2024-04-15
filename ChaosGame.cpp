@@ -33,11 +33,11 @@ int main()
 		{
     			// error...
 		}	
-		sf:Text text;
+		sf::Text text;
 		text.setFont(font);
 		text.setString("Click on 3 points to draw the triangle.");
 		text.setCharacterSize(18);
-		text.FillColor(sf::Color::Red);
+		text.setFillColor(sf::Color::Red);
 		text.setStyle(sf::Text::Bold);
 		window.draw(text);
 		
