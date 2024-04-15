@@ -22,13 +22,13 @@ int main()
     
 	while (window.isOpen())
 	{
-        	/*
+       	/*
 		****************************************
 		Handle the players input
 		****************************************
 		*/
 		//I made additions from the font/text sfml until the window.draw(text);
-		sf:Font font;
+		sf::Font font;
 		if (!font.loadFromFile("arial.ttf"))
 		{
     			// error...
@@ -65,10 +65,10 @@ int main()
                     				{
                        					///fourth click
                         				///push back to points vector
-							//I went ahead and added the std::cout and the push_back. Lemme know
-							//if that the implementation requires changes
-							std::cout << "click a point inside the triangle" << std::endl;
-							vertices.push_back(Vector2f(event.mouseButton.x, event.mouseButton.y));
+							            //I went ahead and added the std::cout and the push_back. Lemme know
+							            //if that the implementation requires changes
+							            std::cout << "click a point inside the triangle" << std::endl;
+							            vertices.push_back(Vector2f(event.mouseButton.x, event.mouseButton.y));
                     				}
                 		}
             		}
