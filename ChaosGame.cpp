@@ -31,7 +31,7 @@ int main()
 		sf::Font font;
 		if (!font.loadFromFile("arial.ttf"))
 		{
-    			// error...
+            std::cout << "Unable to upload file" << std::endl;
 		}	
 		sf::Text text;
 		text.setFont(font);
