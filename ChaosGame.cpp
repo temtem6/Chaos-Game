@@ -84,39 +84,39 @@ int main()
    */
         window.clear();
         window.draw(text);
-        for (int i = 0; i < 3000; i++)
-        {
-            if (points.size() > 0)
+            for (int i = 0; i < 3000; i++)
             {
-                ///generate more point(s)
-                ///select random vertex
-                ///calculate midpoint between random vertex and the last point in the vector
-                ///push back the newly generated coord.
-                int a;
-                a = rand() % 3;
-                //we will use rand to give us the random vertex
-                float x;
-                float y;
-                //So in this case, we make x for the x-coordinate when we take the diff
-                //y for the y-coordinate for the y dif
-                //then we just push this new coordinate into the points vector.
-                if (points.at(i).x < vertices.at(a).x)
+                if (points.size() > 0)
                 {
-                    x = abs(vertices.at(a).x - points.at(i).x)/2 + points.at(i).x;
+                    ///generate more point(s)
+                    ///select random vertex
+                    ///calculate midpoint between random vertex and the last point in the vector
+                    ///push back the newly generated coord.
+                    int a;
+                    a = rand() % 3;
+                    //we will use rand to give us the random vertex
+                    float x;
+                    float y;
+                    //So in this case, we make x for the x-coordinate when we take the diff
+                    //y for the y-coordinate for the y dif
+                    //then we just push this new coordinate into the points vector.
+                    if (points.at(i).x < vertices.at(a).x)
+                    {
+                        x = abs(vertices.at(a).x - points.at(i).x) / 2 + points.at(i).x;
+                    }
+                    else {
+                        x = points.at(i).x - abs(points.at(i).x - vertices.at(a).x) / 2;
+                    }
+                    if (points.at(i).y < vertices.at(a).y)
+                    {
+                        y = abs(vertices.at(a).y - points.at(i).y) / 2 + points.at(i).y;
+                    }
+                    else
+                    {
+                        y = points.at(i).y - abs(points.at(i).y - vertices.at(a).y) / 2;
+                    }
+                    points.push_back(Vector2f(x, y));
                 }
-                else {
-                    x = points.at(i).x - abs(points.at(i).x - vertices.at(a).x)/2;
-                }
-                if (points.at(i).y < vertices.at(a).y)
-                {
-                    y = abs(vertices.at(a).y - points.at(i).y)/2 + points.at(i).y;
-                }
-                else
-                {
-                    y = points.at(i).y - abs(points.at(i).y - vertices.at(a).y)/2;
-                }
-                points.push_back(Vector2f(x, y));
-            }
         }
             /*
         ****************************************
@@ -130,11 +130,15 @@ int main()
             rect.setFillColor(Color::Yellow);
             window.draw(rect);
         }
-        for (int i = 0; i < points.size(); i++) {
-            RectangleShape rect(Vector2f(3, 3));
-            rect.setPosition(Vector2f(points.at(i).x, points.at(i).y));
-            rect.setFillColor(Color::Yellow);
-            window.draw(rect);
+        int n = points.size() / 25;
+        for (int j = 0; j < n; j++)
+        { 
+            for (int i = j; i < j*25 + 25; i++) {
+                RectangleShape rect(Vector2f(3, 3));
+                rect.setPosition(Vector2f(points.at(i).x, points.at(i).y));
+                rect.setFillColor(Color::Yellow);
+                window.draw(rect);
+            }
         }
         window.display();
             
