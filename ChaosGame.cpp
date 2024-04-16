@@ -19,6 +19,18 @@ int main()
 
     vector<Vector2f> vertices;
     vector<Vector2f> points;
+    sf::Font font;
+    if (!font.loadFromFile("arial.ttf"))
+    {
+        std::cout << "Unable to upload file" << std::endl;
+    }
+    sf::Text text;
+    text.setFont(font);
+    text.setString("Click on 3 points to draw the triangle.");
+    text.setCharacterSize(30);
+    text.setFillColor(sf::Color::Red);
+    text.setStyle(sf::Text::Bold);
+
     
     while (window.isOpen())
     {
@@ -27,19 +39,7 @@ int main()
         Handle the players input
         ****************************************
         */
-        //I made additions from the font/text sfml until the window.draw(text);
-        sf::Font font;
-        if (!font.loadFromFile("arial.ttf"))
-        {
-            std::cout << "Unable to upload file" << std::endl;
-        }
-        sf::Text text;
-        text.setFont(font);
-        text.setString("Click on 3 points to draw the triangle.");
-        text.setCharacterSize(18);
-        text.setFillColor(sf::Color::Red);
-        text.setStyle(sf::Text::Bold);
-        window.draw(text);
+        //I made additions from the font/text sfml until the window.draw(text)
 
         Event event;
         while (window.pollEvent(event))
@@ -82,7 +82,9 @@ int main()
    Update
    ****************************************
    */
-        for (int i = 0; i < 1000; i++)
+        window.clear();
+        window.draw(text);
+        for (int i = 0; i < 3000; i++)
         {
             if (points.size() > 0)
             {
@@ -121,22 +123,20 @@ int main()
         Draw
         ****************************************
         */
-            window.clear();
-            for (int i = 0; i < vertices.size(); i++)
-            {
-                RectangleShape rect(Vector2f(10, 10));
-                rect.setPosition(Vector2f(vertices.at(i).x, vertices.at(i).y));
-                rect.setFillColor(Color::Yellow);
-                window.draw(rect);
-            }
-            
-            for (int i = 0; i < points.size(); i++) {
-                RectangleShape rect(Vector2f(5, 5));
-                rect.setPosition(Vector2f(points.at(i).x, points.at(i).y));
-                rect.setFillColor(Color::Yellow);
-                window.draw(rect);
-            }
-            window.display();
+        for (int i = 0; i < vertices.size(); i++)
+        {
+            RectangleShape rect(Vector2f(10, 10));
+            rect.setPosition(Vector2f(vertices.at(i).x, vertices.at(i).y));
+            rect.setFillColor(Color::Yellow);
+            window.draw(rect);
+        }
+        for (int i = 0; i < points.size(); i++) {
+            RectangleShape rect(Vector2f(3, 3));
+            rect.setPosition(Vector2f(points.at(i).x, points.at(i).y));
+            rect.setFillColor(Color::Yellow);
+            window.draw(rect);
+        }
+        window.display();
             
     }
 	return 0;
