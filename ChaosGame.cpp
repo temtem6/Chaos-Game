@@ -88,6 +88,7 @@ int main()
             {
                 if (points.size() > 0)
                 {
+                    /*
                     ///generate more point(s)
                     ///select random vertex
                     ///calculate midpoint between random vertex and the last point in the vector
@@ -102,19 +103,31 @@ int main()
                     //then we just push this new coordinate into the points vector.
                     if (points.at(points.size() -1 ).x < vertices.at(a).x)
                     {
-                        x = abs(vertices.at(a).x - points.at(points.size() - 1).x) / 2 + points.at(points.size() - 1).x;
+                        x = (vertices.at(a).x - points.at(points.size() - 1).x) / 2 + points.at(points.size() - 1).x;
                     }
                     else {
-                        x = points.at(points.size() - 1).x - abs(points.at(points.size() - 1).x - vertices.at(a).x) / 2;
+                        x = points.at(points.size() - 1).x - (points.at(points.size() - 1).x - vertices.at(a).x) / 2;
                     }
                     if (points.at(points.size() - 1).y < vertices.at(a).y)
                     {
-                        y = abs(vertices.at(a).y - points.at(points.size() - 1).y) / 2 + points.at(points.size() - 1).y;
+                        y = (vertices.at(a).y - points.at(points.size() - 1).y) / 2 + points.at(points.size() - 1).y;
                     }
                     else
                     {
-                        y = points.at(points.size() - 1).y - abs(points.at(points.size() - 1).y - vertices.at(a).y) / 2;
+                        y = points.at(points.size() - 1).y - (points.at(points.size() - 1).y - vertices.at(a).y) / 2;
                     }
+                    points.push_back(Vector2f(x, y));
+                    */
+                 
+                    int a = rand() % 3;
+                    float x;
+                    float y;
+                    
+                    
+                        x = (vertices.at(a).x + points.at(points.size() - 1).x) / 2;
+                   
+                        y = (vertices.at(a).y + points.at(points.size() - 1).y) / 2;
+                   
                     points.push_back(Vector2f(x, y));
                 }
             }
