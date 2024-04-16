@@ -84,7 +84,7 @@ int main()
    */
         //window.clear();
         //window.draw(text);
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 30; i++)
             {
                 if (points.size() > 0)
                 {
