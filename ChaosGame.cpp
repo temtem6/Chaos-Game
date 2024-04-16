@@ -82,8 +82,7 @@ int main()
    Update
    ****************************************
    */
-        int i = 0;
-        for (int j = 0; j < 20; j++)
+        for (int i = 0; i < 20; i++)
         {
             if (points.size() > 0)
             {
@@ -91,18 +90,17 @@ int main()
                 ///select random vertex
                 ///calculate midpoint between random vertex and the last point in the vector
                 ///push back the newly generated coord.
-                int a = 0;
-                //a = rand() % 3;
+                int a;
+                a = rand() % 3;
                 //we will use rand to give us the random vertex
                 float x;
                 float y;
                 //So in this case, we make x for the x-coordinate when we take the diff
                 //y for the y-coordinate for the y dif
                 //then we just push this new coordinate into the points vector.
-                x = abs(points.at(i).x - vertices.at(a).x);
-                y = abs(points.at(i).y - vertices.at(a).y);
+                x = abs(points.at(i).x - vertices.at(a).x) + points.at(i).x;
+                y = abs(points.at(i).y - vertices.at(a).y) + points.at(i).y;
                 points.push_back(Vector2f(x, y));
-                i++;
             }
         }
             /*
@@ -118,15 +116,15 @@ int main()
                 rect.setFillColor(Color::Yellow);
                 window.draw(rect);
             }
-            window.display();
-            /*for (int i = 0; i < points.size(); i++) {
+            
+            for (int i = 0; i < points.size(); i++) {
                 RectangleShape rect(Vector2f(5, 5));
                 rect.setPosition(Vector2f(points.at(i).x, points.at(i).y));
                 rect.setFillColor(Color::Yellow);
                 window.draw(rect);
             }
             window.display();
-            */
+            
     }
 	return 0;
 }
