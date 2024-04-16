@@ -82,7 +82,7 @@ int main()
    Update
    ****************************************
    */
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 1000; i++)
         {
             if (points.size() > 0)
             {
@@ -98,8 +98,21 @@ int main()
                 //So in this case, we make x for the x-coordinate when we take the diff
                 //y for the y-coordinate for the y dif
                 //then we just push this new coordinate into the points vector.
-                x = abs(points.at(i).x - vertices.at(a).x) + points.at(i).x;
-                y = abs(points.at(i).y - vertices.at(a).y) + points.at(i).y;
+                if (points.at(i).x < vertices.at(a).x)
+                {
+                    x = abs(vertices.at(a).x - points.at(i).x)/2 + points.at(i).x;
+                }
+                else {
+                    x = points.at(i).x - abs(points.at(i).x - vertices.at(a).x)/2;
+                }
+                if (points.at(i).y < vertices.at(a).y)
+                {
+                    y = abs(vertices.at(a).y - points.at(i).y)/2 + points.at(i).y;
+                }
+                else
+                {
+                    y = points.at(i).y - abs(points.at(i).y - vertices.at(a).y)/2;
+                }
                 points.push_back(Vector2f(x, y));
             }
         }
