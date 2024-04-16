@@ -82,9 +82,9 @@ int main()
    Update
    ****************************************
    */
-        window.clear();
-        window.draw(text);
-            for (int i = 0; i < 3000; i++)
+        //window.clear();
+        //window.draw(text);
+            for (int i = 0; i < 50; i++)
             {
                 if (points.size() > 0)
                 {
@@ -100,29 +100,31 @@ int main()
                     //So in this case, we make x for the x-coordinate when we take the diff
                     //y for the y-coordinate for the y dif
                     //then we just push this new coordinate into the points vector.
-                    if (points.at(i).x < vertices.at(a).x)
+                    if (points.at(points.size() -1 ).x < vertices.at(a).x)
                     {
-                        x = abs(vertices.at(a).x - points.at(i).x) / 2 + points.at(i).x;
+                        x = abs(vertices.at(a).x - points.at(points.size() - 1).x) / 2 + points.at(points.size() - 1).x;
                     }
                     else {
-                        x = points.at(i).x - abs(points.at(i).x - vertices.at(a).x) / 2;
+                        x = points.at(points.size() - 1).x - abs(points.at(points.size() - 1).x - vertices.at(a).x) / 2;
                     }
-                    if (points.at(i).y < vertices.at(a).y)
+                    if (points.at(points.size() - 1).y < vertices.at(a).y)
                     {
-                        y = abs(vertices.at(a).y - points.at(i).y) / 2 + points.at(i).y;
+                        y = abs(vertices.at(a).y - points.at(points.size() - 1).y) / 2 + points.at(points.size() - 1).y;
                     }
                     else
                     {
-                        y = points.at(i).y - abs(points.at(i).y - vertices.at(a).y) / 2;
+                        y = points.at(points.size() - 1).y - abs(points.at(points.size() - 1).y - vertices.at(a).y) / 2;
                     }
                     points.push_back(Vector2f(x, y));
                 }
-        }
+            }
             /*
         ****************************************
         Draw
         ****************************************
         */
+            window.clear();
+            window.draw(text);
         for (int i = 0; i < vertices.size(); i++)
         {
             RectangleShape rect(Vector2f(10, 10));
@@ -130,15 +132,15 @@ int main()
             rect.setFillColor(Color::Yellow);
             window.draw(rect);
         }
-        int n = points.size() / 25;
+        int n = points.size();// / 10;
         for (int j = 0; j < n; j++)
         { 
-            for (int i = j; i < j*25 + 25; i++) {
+            //for (int i = j; i < j*10 + 10; i++) {
                 RectangleShape rect(Vector2f(3, 3));
-                rect.setPosition(Vector2f(points.at(i).x, points.at(i).y));
+                rect.setPosition(Vector2f(points.at(j).x, points.at(j).y));
                 rect.setFillColor(Color::Yellow);
                 window.draw(rect);
-            }
+            //}
         }
         window.display();
             
